@@ -1,5 +1,88 @@
+Utils APIs (/utils/)
+
+GET: /city
+
+PARAMS: 
 {
     "data": {
         "city": "San Franci",
+    }
+}
+
+RETURN:
+{
+    "data": {
+        "San Francisco": {
+            "area_code": ["415"]
+        }
+    }
+}
+
+Numbers APIs (/numbers/)
+
+GET: /search
+
+PARAMS: 
+{
+    "data": {
+        "pattern": ["415"], // one or several in that case
+        "contiguous_number": "50"
+    }
+}
+
+RETURN: 
+{
+    "data": {
+        "4156760468": {
+            "provider": "bandwidth"
+            // Here might come more info
+        }
+    }
+}
+
+-------------------
+
+POST: /order
+
+PARAMS: 
+{
+    "data": {
+        "numbers": ["4156760468", "4156760469"]
+    }
+}
+
+RETURN:
+{
+    "data": {
+        "4156760468": {
+            "status": "success"
+        },
+        "4156760469": {
+            "status": "error",
+            "description": "Nope, because F you"
+        },
+    }
+}
+
+-------------------
+
+GET: /status
+
+PARAMS: 
+{
+    "data": {
+        "numbers": ["4156760468", "4156760469"]
+    }
+}
+
+RETURN:
+{
+    "data": {
+        "4156760468": {
+            "available": true
+        },
+        "4156760469": {
+            "available": false
+        },
     }
 }
